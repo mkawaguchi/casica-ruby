@@ -1,6 +1,6 @@
 module Casica
   class Request
-    def initialize(token: token)
+    def initialize(token:)
       @token = token
     end
 

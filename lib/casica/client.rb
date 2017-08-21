@@ -5,7 +5,7 @@ module Casica
     end
 
     def projects
-      api(:get, '/projects', :get)
+      api(:get, '/projects')
     end
 
     def stories(project_id:)
@@ -50,7 +50,7 @@ module Casica
 
     private
 
-    def api(method, path, args)
+    def api(method, path, args = nil)
       Casica::Response.new(request.send(:request, method, path, args)).response
     end
 

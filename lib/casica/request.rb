@@ -4,7 +4,7 @@ module Casica
       @token = token
     end
 
-    def request(method, path, args)
+    def request(method, path, args = nil)
       connection.send(method, full_url(path), args, headers)
     end
 

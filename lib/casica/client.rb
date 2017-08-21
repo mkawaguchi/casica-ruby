@@ -29,7 +29,7 @@ module Casica
     end
 
     def update_story_status(project_id:, from_status:, to_status:)
-      api(:patch, "/projects/#{project_id}/stories/statuses", from_status: from_status, to_status: to_status)
+      api(:patch, "/projects/#{project_id}/stories/statuses", status: { from_status: from_status, to_status: to_status })
     end
 
     def create_task(project_id:, story_serial_num:, attributes: {})
@@ -45,13 +45,13 @@ module Casica
     end
 
     def update_task_status(project_id:, from_status:, to_status:)
-      api(:patch, "/projects/#{project_id}/tasks/statuses", from_status: from_status, to_status: to_status)
+      api(:patch, "/projects/#{project_id}/tasks/statuses", status: { from_status: from_status, to_status: to_status })
     end
 
     private
 
-    def api(method, path, *args)
-      Casica::Response.new(request.send(:request, method, path, *args)).response
+    def api(method, path, args)
+      Casica::Response.new(request.send(:request, method, path, args)).response
     end
 
     def request
